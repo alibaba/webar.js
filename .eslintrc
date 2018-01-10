@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint-config-airbnb-base"],
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "globals": {},
+  "parser": "babel-eslint",  
+  "rules": {
+    "no-bitwise": 0,
+    "strict": 0
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "env": {
+    "WEBPACK": {
+        "presets": [
+          ["es2015", {
+            "modules": false
+          }],
+          "stage-0"
+        ],
+        "plugins": [
+          "transform-async-to-generator",
+          "transform-es2015-destructuring",
+          "transform-es2015-modules-commonjs",
+          "transform-object-assign",
+          "transform-object-rest-spread",
+          ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+          }]
+        ]
+    },
+  
+    "ROLLUP": {
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ]
+      ],
+      "plugins": [
+        "external-helpers"
+      ]
+    }
+
+  }
+}
