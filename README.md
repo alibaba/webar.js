@@ -44,12 +44,26 @@ const gl = canvas.getContext('webgl');
 * @param {Object} option - 配置
 * @param {String} option.cameraSize - 贴图的适应方式，提供三个选项：'COVER/CONTAIN/STRETCH'
 * @example
-* option.cameraSize：'COVER' - 等比覆盖绘制区域，多余裁剪； 
-* option.cameraSize：'CONTAIN' - 等比全部显示摄像头数据，参考css的backgroundSize: contain;
+* option.cameraSize：'COVER' - 等比覆盖绘制区域，多余裁剪，默认值； 
 * option.cameraSize: 'STRETCH' - 拉伸铺满；
-*
+* 
+* @param {Object} stPosition - 渲染区域在canvas的位置，坐标轴和canvas2d一致，如下图所示。
+* 如果不填stPosition，默认铺满
+* ------------------→ x  (canvas.width, 0)
+* |(0， 0)
+* |
+* |
+* ↓ y  (0, canvas.height)
 */
-const displayTarget = camera.createDisplayTarget(gl, { cameraSize: 'COVER' });
+const displayTarget = camera.createDisplayTarget(gl, { 
+  cameraSize: 'COVER',
+  stPosition: {
+    x: 50,
+    y: 10,
+    width: 400,
+    height: 500,
+  }
+});
 
 // 绘制
 setInterval(() => {
@@ -88,7 +102,7 @@ faceDetector.onResult(data => {
 */
 const MarkerDetedctor = camera.setDetector(camera.DETECTOR.FACE, {
   markers: [ 'playbill', 'h' ],
-  option: { url: 'http:// },
+  option: { url: 'http://url/to/marker' },
 });
 
 // 启动detector
@@ -98,9 +112,6 @@ MarkerDetector.start();
 MarkerDetector.onResult(data => {
   console.log(data);
 });
-
-
 ```
-
 
 
