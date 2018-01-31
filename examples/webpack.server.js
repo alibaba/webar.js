@@ -40,3 +40,4 @@ new WebpackDevServer(webpack(config), {
     console.log('Listening at http://127.0.0.1:3000');
   }
 });
+

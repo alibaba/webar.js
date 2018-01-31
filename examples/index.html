@@ -10,18 +10,34 @@
       padding: 0 0;
     }
     #canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      position: absolute; 
+      left: 0; 
+      top: 0; 
       transform-origin: top left;
       transform: scale(.5);
       -webkit-transform: scale(.5);
+      border: 1px solid #000;
+      z-index: 1;
+    }
+
+    .cover{
+      position: absolute;
+      z-index: 10;
+    }
+
+    .three{
+      position: absolute;
+      z-index: 12;
+      border: 1px solid red;
     }
   </style>
+  <script src="https://image.uc.cn/s/uae/g/01/ar-cj/ar-cj/gl-matrix-min.js"></script>
+  <script src="https://image.uc.cn/s/uae/g/01/ar-cj/three.js"></script>
+  <script src="https://image.uc.cn/s/uae/g/01/ar-cj/ar-cj/GLTF2Loader.js"></script> 
 </head>
 <body>
-  <canvas style="border: 1px solid #000;position: absolute; left: 0; top: 0; z-index: 1;" id="canvas"></canvas>
+  <div class="three"></div>
+  <canvas class="cover"></canvas>
+  <canvas id="canvas"></canvas>
 </body>
 </html>
