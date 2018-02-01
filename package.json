@@ -1,6 +1,6 @@
 {
   "name": "webar.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "JS framework for WebAR",
   "main": "./dist/webar.js",
   "scripts": {
@@ -70,6 +70,6 @@
     }
   },
   "dependencies": {
-    "gl-mat3": "^1.0.0"
+    "vconsole": "^3.1.0"
   }
 }
