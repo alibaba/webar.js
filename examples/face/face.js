@@ -26,10 +26,10 @@ async function face() {
     }, 50);
 
     const faceDetector = camera.setDetector('FaceDetector', { rect: true, alignment: true });
-    faceDetector.onDetectorInitResult(data => {
+    faceDetector.onDetectorInitResult((data) => {
       console.log('onDetectorInitResult', data);
     });
-    faceDetector.onResult(data => {
+    faceDetector.onResult((data) => {
       if (data.count === 0) return;
       fpointer.draw(data);
     });

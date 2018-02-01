@@ -40,7 +40,7 @@ class Viewer {
   gltflLoad(url) {
     const loader = new window.THREE.GLTF2Loader();
     loader.setCrossOrigin('anonymous');
-    loader.load(url, gltf => {
+    loader.load(url, (gltf) => {
       this.setContent(gltf.scene || gltf.scenes[0]);
       this.setClips(gltf.animations || []);
     }, undefined);
@@ -55,7 +55,7 @@ class Viewer {
     this.content = this.object;
 
     this.state.addLights = true;
-    this.content.traverse(node => {
+    this.content.traverse((node) => {
       if (node.isLight) {
         this.state.addLights = false;
       }
@@ -119,22 +119,23 @@ class Viewer {
   detectionCatch(matrix) {
     const time = +new Date();
     const dt = (time - this.prevTime) / 1000;
-    this.mixer && this.mixer.update(dt);
+    if (this.mixer) {
+      this.mixer.update(dt);
+    }
     this.prevTime = time;
     this.render();
     if (this.isIOS) {
       const scaleNum = 0.8 * 1e-4;
-      window.mat4.scale(matrix, matrix, [ scaleNum, scaleNum, scaleNum * 200 ]);
+      window.mat4.scale(matrix, matrix, [scaleNum, scaleNum, scaleNum * 200]);
     } else {
       const scaleNum = 0.02;
-      window.mat4.scale(matrix, matrix, [ scaleNum, scaleNum, scaleNum ]);
+      window.mat4.scale(matrix, matrix, [scaleNum, scaleNum, scaleNum]);
     }
-    window.mat4.rotate(matrix, matrix, Math.PI, [ 0, 1, 0 ]);
-    window.mat4.rotate(matrix, matrix, -Math.PI / 2, [ 1, 0, 0 ]);
+    window.mat4.rotate(matrix, matrix, Math.PI, [0, 1, 0]);
+    window.mat4.rotate(matrix, matrix, -Math.PI / 2, [1, 0, 0]);
     this.object.matrix.elements = matrix;
     this.render();
   }
-
 }
 
 export default Viewer;
