@@ -32,7 +32,7 @@ const canvas = document.querySelector('#canvas');
 const gl = canvas.getContext('webgl');
 
 // 配置并生成 displayTarget
-const displayTarget = camera.createDisplayTarget(gl);
+const displayTarget = camera.createDisplayTarget(gl,);
 
 // 绘制
 const draw = () => {
@@ -49,7 +49,7 @@ window.requestAnimationFrame(draw);
 * @param {Boolean} option.rect - 是否返回人脸框位置
 * @param {Boolean} option.alignment - 是否返回人脸五官的点
 */
-const faceDetector = camera.setDetector(camera.DETECTOR.FACE, {
+const faceDetector = camera.setDetector(WebAR.DETECTOR.FACE, {
   singleFace: false,
   rect: true,
   alignment: true,
@@ -64,7 +64,7 @@ faceDetector.start().then(() => {
 }, () => {
   // rejecjt 回调。detector 异常。
   // 在安卓上可能是SO 下载失败，SO 初始化失败等
-  // 如果在iOS 上进入错误回调，请发issue。
+  // 在iOS 不应该进入错误回调，如果有请发issue。
 });
 
 /*
