@@ -91,6 +91,12 @@ MarkerDetector.start().then(() => {
   // 如果在iOS 上进入错误回调，请发issue。
 });
 
+// 截图功能
+displayTarget.getImage(base64 => {
+  // 当前帧base64
+  console.log(base64);
+});
+
 ```
 ## License
 <a href="https://github.com/alibaba/webar.js/blob/master/LICENSE">MIT</a>
