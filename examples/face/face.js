@@ -1,6 +1,6 @@
 
 import WebAR from '../../dist/webar';
-import facePoint from './facePoints';
+import FacePoint from './facePoints';
 
 async function face() {
   console.log('FaceDetector');
@@ -10,7 +10,7 @@ async function face() {
   const coverCanvas = document.querySelector('.cover');
   coverCanvas.width = 480 / 2;
   coverCanvas.height = 640 / 2;
-  const fpointer = new facePoint(coverCanvas);
+  const fpointer = new FacePoint(coverCanvas);
   const gl = canvas.getContext('webgl');
   let camera = null;
   try {
@@ -25,7 +25,7 @@ async function face() {
       displayTarget.draw();
     }, 50);
 
-    const faceDetector = camera.setDetector('FaceDetector', { rect: true, alignment: true });
+    const faceDetector = camera.setDetector('FaceDetector', { alignment: true });
     faceDetector.onDetectorInitResult((data) => {
       console.log('onDetectorInitResult', data);
     });
